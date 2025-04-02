@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.gitplugin</groupId>
+    <artifactId>git-skip-worktree-plugin</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>Git Skip-Worktree Plugin</name>
+    <description>Plugin to mark/unmark changelists as skip-worktree in Git</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <idea.version>2024.3.5</idea.version>  <!-- Versión de IntelliJ -->
+    </properties>
+
+    <dependencies>
+        <!-- Dependencia para interactuar con Git en IntelliJ -->
+        <dependency>
+            <groupId>org.jetbrains.idea</groupId>
+            <artifactId>git4idea</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Plugin para desarrollar plugins en IntelliJ -->
+            <plugin>
+                <groupId>org.jetbrains.intellij</groupId>
+                <artifactId>intellij-maven-plugin</artifactId>
+                <version>0.7.3</version>
+                <configuration>
+                    <ideaVersion>${idea.version}</ideaVersion>
+                    <updateSinceUntilBuild>false</updateSinceUntilBuild>
+                </configuration>
+            </plugin>
+
+            <!-- Plugin para compilar código Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Plugin para empaquetar el plugin como un ZIP -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/resources/META-INF/plugin.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

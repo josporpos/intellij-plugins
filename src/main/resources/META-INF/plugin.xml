@@ -1,0 +1,15 @@
+<actions>
+    <action id="es.japp.intellij.plugins.worktree.SkipWorktreeAction"
+            class="es.japp.intellij.plugins.worktree.SkipWorktreeAction"
+            text="Mark Changelist as Skip Worktree"
+            description="Marks all files in the active changelist as skip-worktree">
+        <add-to-group group-id="VcsGroup" anchor="last"/>
+    </action>
+
+    <action id="es.japp.intellij.plugins.worktree.NoSkipWorktreeAction"
+            class="es.japp.intellij.plugins.worktree.NoSkipWorktreeAction"
+            text="Unmark Changelist Skip Worktree"
+            description="Removes skip-worktree from all files in the active changelist">
+        <add-to-group group-id="VcsGroup" anchor="last"/>
+    </action>
+</actions>
